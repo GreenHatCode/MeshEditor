@@ -1,6 +1,7 @@
 #pragma once
 #include "Command.h"
 #include <iostream>
+#include <vector>
 
 class Application
 {
@@ -12,6 +13,6 @@ public:
 	int execute(int argc, char* argv[]);
 
 private:
-	//todo: To store the commands for calling them later, choose a container that suits your implementation best
+	std::vector<std::unique_ptr<Command>> commands; // stores the commands for calling them later, choose a container that suits your implementation best
 };
 
