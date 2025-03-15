@@ -2,11 +2,7 @@
 
 void Application::registerCommand(std::unique_ptr<Command> command)
 {
-	//m_commandmap.emplace((*command).getName(),command);
-
-
-	m_commandmap.emplace(std::make_pair("Cube", nullptr)); // exapmle data
-
+	m_commandmap.emplace(command->getName(), std::move(command));
 }
 
 int Application::execute(int argc, char* argv[])
@@ -21,7 +17,7 @@ int Application::execute(int argc, char* argv[])
 		std::getline(std::cin, input_command);
 		std::cout << input_command << std::endl;
 
-		if (isCommand(input_command))
+		if (auto search = m_commandmap.find(input_command.substr(0, input_command.find_first_of(' '))); search != m_commandmap.end())
 		{
 			std::cout << "success" << std::endl;
 		}
@@ -32,10 +28,4 @@ int Application::execute(int argc, char* argv[])
 	}
 
 	return 0;
-}
-
-bool Application::isCommand(const std::string& command)
-{
-	if (m_commandmap.find(command.substr(0, command.find_first_of(' '))) != m_commandmap.end())return true;
-	else return false;
 }
