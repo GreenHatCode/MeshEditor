@@ -1,7 +1,7 @@
 #pragma once
 #include "Command.h"
 #include <iostream>
-#include <vector>
+#include <map>
 
 class Application
 {
@@ -13,6 +13,11 @@ public:
 	int execute(int argc, char* argv[]);
 
 private:
-	std::vector<std::unique_ptr<Command>> commands; // stores the commands for calling them later, choose a container that suits your implementation best
+	std::map<std::string, std::unique_ptr<Command>> m_commandmap; // stores the commands for calling them later, choose a container that suits your implementation best
+
+	bool isCommand(const std::string& command);
+
+
+
 };
 
