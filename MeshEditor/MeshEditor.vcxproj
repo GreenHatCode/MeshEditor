@@ -139,7 +139,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="MeshEditor.cpp" />
+    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Split.cpp" />
+    <ClCompile Include="STLParser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Cube.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="Split.h" />
+    <ClInclude Include="STLParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
