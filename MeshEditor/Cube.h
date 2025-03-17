@@ -1,5 +1,6 @@
 #pragma once
 #include "Command.h"
+#include <iostream>
 
 // execute method return codes
 // 0 — if succeeded. 
