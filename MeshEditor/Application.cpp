@@ -19,7 +19,10 @@ int Application::execute(int argc, char* argv[])
 
 		if (auto search = m_commandmap.find(input_command.substr(0, input_command.find_first_of(' '))); search != m_commandmap.end())
 		{
-			std::cout << "success" << std::endl;
+
+
+
+			search->second->execute(GetCommandArgs(input_command));
 		}
 		else std::cerr << "There is no such command!" << std::endl;
 
@@ -28,4 +31,19 @@ int Application::execute(int argc, char* argv[])
 	}
 
 	return 0;
+}
+
+std::map<std::string, std::string> Application::GetCommandArgs(std::string command)
+{
+	// remove command name
+	command.erase(0, command.find(' ')+1);
+	
+	// remove all spaces
+	const auto no_space_end = std::remove(command.begin(), command.end(), ' ');
+	command.erase(no_space_end, command.end());
+
+	std::map<std::string, std::string> result_map;
+	std::string key, val;
+
+	return result_map;
 }

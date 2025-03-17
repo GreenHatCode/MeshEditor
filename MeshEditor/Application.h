@@ -15,7 +15,7 @@ public:
 private:
 	std::map<std::string, std::unique_ptr<Command>> m_commandmap; // stores the commands for calling them later, choose a container that suits your implementation best
 
-
+	std::map<std::string, std::string> GetCommandArgs(std::string command);
 
 };
 
