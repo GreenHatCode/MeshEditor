@@ -19,10 +19,14 @@ int Application::execute(int argc, char* argv[])
 
 		if (auto search = m_commandmap.find(input_command.substr(0, input_command.find_first_of(' '))); search != m_commandmap.end())
 		{
+<<<<<<< Updated upstream
 			// todo: validate()
 			// todo: add exit command
 
 			search->second->execute(GetCommandArgs(input_command)); // todo: add output result 
+=======
+			std::cout << "Command finished with code " << search->second->execute(GetCommandArgs(input_command)) << std::endl;;
+>>>>>>> Stashed changes
 		}
 		else std::cerr << "There is no such command!" << std::endl;
 
