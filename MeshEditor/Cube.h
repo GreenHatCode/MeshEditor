@@ -16,7 +16,6 @@ public:
 	int execute(const std::map<std::string, std::string>& args) override;
 
 private:
-	// todo: implement
 	std::string m_command_name = "Cube";
 };
 
