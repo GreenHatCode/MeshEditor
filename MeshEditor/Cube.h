@@ -1,5 +1,6 @@
 #pragma once
 #include "Command.h"
+#include "STLParser.h"
 #include <iostream>
 
 // execute method return codes

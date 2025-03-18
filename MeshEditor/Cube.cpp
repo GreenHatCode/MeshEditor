@@ -11,5 +11,9 @@ int Cube::execute(const std::map<std::string, std::string>& args)
 	{
 		std::cout << "Cube args: arg_name = " << val.first << "  arg_value = " << val.second << std::endl;
 	}
+
+	STLParser stlParser;
+	stlParser.write(TriangleSoup(), "c:/TEMP/example_stl.stl");
+
     return 0;
 }
