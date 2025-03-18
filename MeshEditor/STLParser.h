@@ -18,8 +18,8 @@ using TriangleSoup = std::vector<Triangle>;
 class STLParser
 {
 public:
-	TriangleSoup read(const std::string& filename);
-	void write(const TriangleSoup& triangleSoup, const std::string& filename);
+	TriangleSoup read(const std::string& filename); // reads model data from file
+	void write(const TriangleSoup& triangleSoup, const std::string& filename); // writes model data to file
 private:
 	//todo: implement stl parser
 
