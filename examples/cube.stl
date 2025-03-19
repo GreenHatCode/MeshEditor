@@ -1,0 +1,86 @@
+solid MeshEditor
+facet normal 0 0 -1
+outer loop
+vertex 9.5 -1.6 2.1
+vertex -0.5 -1.6 2.1
+vertex -0.5 8.4 2.1
+endloop
+endfacet
+facet normal 0 -0 1
+outer loop
+vertex 9.5 -1.6 2.1
+vertex 9.5 8.4 2.1
+vertex -0.5 8.4 2.1
+endloop
+endfacet
+facet normal -1 0 0
+outer loop
+vertex 9.5 -1.6 2.1
+vertex 9.5 -1.6 12.1
+vertex 9.5 8.4 12.1
+endloop
+endfacet
+facet normal 1 0 0
+outer loop
+vertex 9.5 -1.6 2.1
+vertex 9.5 8.4 2.1
+vertex 9.5 8.4 12.1
+endloop
+endfacet
+facet normal 0 -1 0
+outer loop
+vertex 9.5 8.4 2.1
+vertex 9.5 8.4 12.1
+vertex -0.5 8.4 12.1
+endloop
+endfacet
+facet normal 0 1 -0
+outer loop
+vertex 9.5 8.4 2.1
+vertex -0.5 8.4 2.1
+vertex -0.5 8.4 12.1
+endloop
+endfacet
+facet normal -1 0 0
+outer loop
+vertex -0.5 8.4 2.1
+vertex -0.5 -1.6 2.1
+vertex -0.5 -1.6 12.1
+endloop
+endfacet
+facet normal 1 0 -0
+outer loop
+vertex -0.5 8.4 2.1
+vertex -0.5 8.4 12.1
+vertex -0.5 -1.6 12.1
+endloop
+endfacet
+facet normal 0 -1 0
+outer loop
+vertex -0.5 -1.6 2.1
+vertex 9.5 -1.6 2.1
+vertex 9.5 -1.6 12.1
+endloop
+endfacet
+facet normal 0 1 0
+outer loop
+vertex -0.5 -1.6 2.1
+vertex -0.5 -1.6 12.1
+vertex 9.5 -1.6 12.1
+endloop
+endfacet
+facet normal 0 0 -1
+outer loop
+vertex 9.5 -1.6 12.1
+vertex -0.5 -1.6 12.1
+vertex -0.5 8.4 12.1
+endloop
+endfacet
+facet normal 0 -0 1
+outer loop
+vertex 9.5 -1.6 12.1
+vertex 9.5 8.4 12.1
+vertex -0.5 8.4 12.1
+endloop
+endfacet
+endsolid MeshEditor
