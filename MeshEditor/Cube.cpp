@@ -7,12 +7,7 @@ const std::string& Cube::getName() const
 
 int Cube::execute(const std::map<std::string, std::string>& args)
 {
-	for (auto val: args)
-	{
-		std::cout << "Cube args: arg_name = " << val.first << "  arg_value = " << val.second << std::endl;
-	}
-
-	// todo: add validation and outputing codes
+	// validation and outputing codes
 	if (args.count("L") != 1 || args.count("origin") != 1 || args.count("filepath") != 1) return 3;
 	if (std::stod(args.at("L")) <= 0)return 1;
 	std::ofstream test(args.at("filepath"));
