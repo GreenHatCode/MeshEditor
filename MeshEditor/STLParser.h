@@ -8,7 +8,7 @@
 struct Vec
 {
 	Vec() { x = 0; y = 0; z = 0; }
-	Vec(double x, double y, double z) { x = x; y = y; z = z; }
+	Vec(double X, double Y, double Z) { x = X; y = Y; z = Z; }
 	Vec operator-() const { return Vec(-x, -y, -z); }
 	Vec& operator+=(const Vec& right)
 	{
