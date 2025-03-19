@@ -18,5 +18,7 @@ public:
 
 private:
 	std::string m_command_name = "Cube";
+
+	Vec get_origin(const std::string str_origin);
 };
 
