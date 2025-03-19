@@ -1,4 +1,4 @@
-solid MeshEditor
+solid Exported from Blender-2.80 (sub 75)
 facet normal 0 0 -1
 outer loop
 vertex 114.5 -46.6 2.1
@@ -83,4 +83,4 @@ vertex 114.5 53.4 102.1
 vertex 14.5 53.4 102.1
 endloop
 endfacet
-endsolid MeshEditor
+endsolid Exported from Blender-2.80 (sub 75)
