@@ -15,13 +15,12 @@ int Application::execute(int argc, char* argv[])
 	{
 		std::cout << "command> ";
 		std::getline(std::cin, input_command);
-		std::cout << input_command << std::endl;
+		std::cout << input_command << std::endl; // todo: remove in the end
 
 		if (input_command == "exit")return 0;
 
 		if (auto search = m_commandmap.find(input_command.substr(0, input_command.find_first_of(' '))); search != m_commandmap.end())
 		{
-			// todo: add exit command 
 			std::cout << "Command finished with code " << search->second->execute(GetCommandArgs(input_command)) << std::endl;;
 		}
 		else std::cerr << "There is no such command!" << std::endl;
