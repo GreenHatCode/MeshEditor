@@ -30,26 +30,23 @@ int Cube::execute(const std::map<std::string, std::string>& args)
 	// creating the cude from triangles
 	TriangleSoup cube;
 	// bottom face
-	cube.push_back(Triangle(A, B, C));
-	cube.push_back(Triangle(A, D, C));
+	cube.push_back(Triangle(B, C, A));
+	cube.push_back(Triangle(D, A, C));
 	// front face
-	cube.push_back(Triangle(A, A_top, D_top));
 	cube.push_back(Triangle(A, D, D_top));
+	cube.push_back(Triangle(D_top, A_top, A));
 	// right face
-	cube.push_back(Triangle(D, D_top, C_top));
-	cube.push_back(Triangle(D, C, C_top));
+	cube.push_back(Triangle(D_top, D, C_top));
+	cube.push_back(Triangle(C, C_top, D));
 	// back face
-	cube.push_back(Triangle(C, B, B_top));
-	cube.push_back(Triangle(C, C_top, B_top));
+	cube.push_back(Triangle(B, B_top, C));
+	cube.push_back(Triangle(C_top, C, B_top));
 	// left face
-	cube.push_back(Triangle(B, A, A_top));
-	cube.push_back(Triangle(B, B_top, A_top));
+	cube.push_back(Triangle(B_top, B, A_top));
+	cube.push_back(Triangle(A, A_top, B));
 	// top face
-	cube.push_back(Triangle(A_top, B_top, C_top));
-	cube.push_back(Triangle(A_top, D_top, C_top));
-
-
-
+	cube.push_back(Triangle(C_top, B_top, D_top));
+	cube.push_back(Triangle(A_top, D_top, B_top));
 
 	STLParser stlParser;
 	stlParser.write(cube, args.at("filepath"));
