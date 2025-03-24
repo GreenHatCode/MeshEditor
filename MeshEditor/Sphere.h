@@ -1,5 +1,10 @@
 #pragma once
 #include "Command.h"
+#include "STLParser.h"
+
+// todo: add finish codes
+
+
 
 class Sphere : public Command
 {
@@ -8,6 +13,8 @@ public:
 	int execute(const std::map<std::string, std::string>& args) override;
 
 private:
-	// todo: implement
+	std::string m_command_name = "Sphere";
+
+	Vec get_origin(const std::string str_origin);
 };
 
