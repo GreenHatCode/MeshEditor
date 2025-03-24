@@ -1,6 +1,10 @@
 #pragma once
 #include "Command.h"
 #include "STLParser.h"
+#include <cmath>
+
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 // execute method return codes
 //	0 — if succeeded.

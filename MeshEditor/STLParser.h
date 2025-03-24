@@ -65,7 +65,8 @@ struct Triangle
 		A = a;
 		B = b;
 		C = c;
-		normal = get_normal(a, b, c);
+		//normal = get_normal(a, b, c);
+		normal = { 0,0,0 };
 	}
 
 	Vec A, B, C;
