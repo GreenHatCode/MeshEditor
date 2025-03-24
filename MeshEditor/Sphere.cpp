@@ -31,10 +31,14 @@ int Sphere::execute(const std::map<std::string, std::string>& args)
 			float phi2 = 2 * M_PI * (static_cast<int>(n) + 1) / slices;
 
 			// Vertices for two triangles forming a quad
-			Vec v1(R * sin(theta1) * cos(phi1), R * sin(theta1) * sin(phi1), R * cos(theta1));
+			Vec v1(R * sin(theta1) * cos(phi1), R * sin(theta1) * sin(phi1), R * cos(theta1)); 
 			Vec v2(R * sin(theta1) * cos(phi2), R * sin(theta1) * sin(phi2), R * cos(theta1));
 			Vec v3(R * sin(theta2) * cos(phi1), R * sin(theta2) * sin(phi1), R * cos(theta2));
 			Vec v4(R * sin(theta2) * cos(phi2), R * sin(theta2) * sin(phi2), R * cos(theta2));
+
+			// the problem of the nan in normal for Vec
+			// is that some of v1, v2, v3, v4 have the same coords
+			// and the program can't calculate the normal
 
 			sphere_mesh.push_back(Triangle(v1, v2, v3));
 			sphere_mesh.push_back(Triangle(v2, v4, v3));
