@@ -15,20 +15,20 @@ int Sphere::execute(const std::map<std::string, std::string>& args)
 
 	double R = std::stod(args.at("R"));
 	Vec origin = get_origin(args.at("origin")); // I consider it the center of the sphere
-	unsigned long slices = std::stoul(args.at("slices"));
-	unsigned long rings = std::stoul(args.at("rings"));
+	unsigned int slices = std::stoul(args.at("slices"));
+	unsigned int rings = std::stoul(args.at("rings"));
 
 	TriangleSoup sphere_mesh;
 
-	for (unsigned long m = 0; m < rings; m++)
+	for (unsigned int m = 0; m < rings; m++)
 	{
 		float theta1 = M_PI * m / rings;
-		float theta2 = M_PI * (static_cast<int>(m) + 1) / rings;
+		float theta2 = M_PI * (m + 1) / rings;
 
 		for (unsigned long n = 0; n < slices; n++)
 		{
 			float phi1 = 2 * M_PI * n / slices;
-			float phi2 = 2 * M_PI * (static_cast<int>(n) + 1) / slices;
+			float phi2 = 2 * M_PI * (n + 1) / slices;
 
 			// Vertices for two triangles forming a quad
 			Vec v1(R * sin(theta1) * cos(phi1), R * sin(theta1) * sin(phi1), R * cos(theta1)); 
@@ -40,10 +40,23 @@ int Sphere::execute(const std::map<std::string, std::string>& args)
 			// is that some of v1, v2, v3, v4 have the same coords
 			// and the program can't calculate the normal
 
-			sphere_mesh.push_back(Triangle(v1, v2, v3));
-			sphere_mesh.push_back(Triangle(v2, v4, v3));
+			if (m == 0)
+			{
+				sphere_mesh.push_back(Triangle(v1, v4, v3));
+			}
+			else if (m + 1 == rings)
+			{
+				sphere_mesh.push_back(Triangle(v4, v1, v2));
+			}
+			else
+			{
+				sphere_mesh.push_back(Triangle(v1, v2, v3));
+				sphere_mesh.push_back(Triangle(v2, v4, v3));
+			}
 
 
+
+			
 
 		}
 	}
