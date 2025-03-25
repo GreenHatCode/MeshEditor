@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include <iostream>
 
 
 struct Vec
@@ -66,8 +67,12 @@ struct Triangle
 		B = b;
 		C = c;
 		normal = get_normal(a, b, c);
+		//normal = { 0,0,0 };
 	}
-
+	void flip_normal() {
+		std::swap(B, C);
+		normal = get_normal(A, B, C);
+	}
 	Vec A, B, C;
 	Vec normal;
 };
