@@ -85,7 +85,6 @@ public:
 	TriangleSoup read(const std::string& filename); // reads model data from file
 	void write(const TriangleSoup& triangleSoup, const std::string& filename); // writes model data to file
 private:
-	std::string print_triangle(Triangle triangle);
 
 };
 

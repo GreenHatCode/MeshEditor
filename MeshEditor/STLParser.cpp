@@ -1,5 +1,31 @@
 #include "STLParser.h"
 
+TriangleSoup STLParser::read(const std::string& filename)
+{
+	std::ifstream file;
+	file.open(filename);
+
+	TriangleSoup mesh;
+	std::string line, buf;
+	double px, py, pz;
+	Vec v[3];
+	int i = 0;
+	while (std::getline(file, line)) {
+		if (line.find("vertex") != std::string::npos) {
+			std::istringstream s(line);
+			s >> buf >> px >> py >> pz;
+			v[i] = { px, py, pz };
+			if (++i >= 3) {
+				i = 0;
+				Triangle t(v[0], v[1], v[2]);
+				mesh.push_back(t);
+			}
+			continue;
+		}
+	}
+	return mesh;
+}
+
 void STLParser::write(const TriangleSoup& triangleSoup, const std::string& filename)
 {
 	std::ofstream otf(filename, std::ios::out);
