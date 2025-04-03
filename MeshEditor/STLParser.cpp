@@ -46,3 +46,5 @@ void STLParser::write(const TriangleSoup& triangleSoup, const std::string& filen
 	otf.flush();
 	otf.close();
 }
+
+

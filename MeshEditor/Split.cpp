@@ -10,10 +10,12 @@ int Split::execute(const std::map<std::string, std::string>& args)
 	if (args.count("input") != 1 || args.count("origin") != 1 || args.count("direction") != 1 || args.count("output1") != 1 || args.count("output2") != 1) return 3;
 	if (get_origin(args.at("direction")).length() <= 0)return 1;
 	if (!fileExists(args.at("output1"), false) || !fileExists(args.at("output2"), false) || !fileExists(args.at("input"), true))return 2;
-	// todo: check if the panel intersects the mesh
-
+	
 	STLParser stlParser;
 	TriangleSoup input_mesh = stlParser.read(args.at("input"));
+	if (!intersects_mesh(input_mesh, get_origin(args.at("origin")), get_origin(args.at("direction"))))return 4;
+
+	
 
 
 
