@@ -3,7 +3,7 @@
 
 #include "Sphere.h"
 #include "Cube.h"
-//#include "Split.h"
+#include "Split.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
 	app.registerCommand(std::make_unique<Sphere>());
 	app.registerCommand(std::make_unique<Cube>());
-	//app.registerCommand(std::make_unique<Split>());
+	app.registerCommand(std::make_unique<Split>());
 
 	return app.execute(argc, argv);
 }
