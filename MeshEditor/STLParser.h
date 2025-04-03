@@ -20,6 +20,13 @@ struct Vec
 	double dot(const Vec& v) const {
 		return x * v.x + y * v.y + z * v.z;
 	}
+	// approximate calculation of the coordinates 
+	// of the intermediate point between points v and t
+	Vec interpolate(const Vec& v, double t) const 
+	{ 
+		return { x + t * (v.x - x), y + t * (v.y - y), z + t * (v.z - z) }; 
+	}
+
 	double x, y, z;
 };
 
