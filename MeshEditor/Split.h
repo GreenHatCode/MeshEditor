@@ -18,7 +18,7 @@ public:
 private:
 	std::string m_command_name = "Split";
 
-	bool fileExists(const std::string& file_path);
+	bool fileExists(const std::string& file_path, bool input_file);
 	Vec get_origin(const std::string str_origin);
 };
 
