@@ -21,6 +21,7 @@ int Split::execute(const std::map<std::string, std::string>& args)
     Vec origin = get_origin(args.at("origin"));
     TriangleSoup above, below; // above mesh - all Vecs that are placed above the panel. below - below the panel
 
+
     for (const auto& triangle : input_mesh) {
         double d0 = normal.dot(triangle.A - origin);
         double d1 = normal.dot(triangle.B - origin);
@@ -56,10 +57,10 @@ int Split::execute(const std::map<std::string, std::string>& args)
 
             // Triangulate the new shapes
             above.push_back({ positive[0], intersectionPoints[0], intersectionPoints[1] });
-            below.push_back({ negative[0], intersectionPoints[0], intersectionPoints[1] });
+            below.push_back({ negative[0], intersectionPoints[1], intersectionPoints[0] }); // problem
 
             if (positive.size() == 2) {
-                above.push_back({ positive[0], positive[1], intersectionPoints[1] });
+                above.push_back({ positive[1], positive[0], intersectionPoints[1] });
             }
             if (negative.size() == 2) {
                 below.push_back({ negative[0], negative[1], intersectionPoints[1] });
