@@ -42,20 +42,16 @@ int Sphere::execute(const std::map<std::string, std::string>& args)
 
 			if (m == 0)
 			{
-				sphere_mesh.push_back(Triangle(v1, v4, v3));
-				sphere_mesh.back().flip_normal();
+				sphere_mesh.push_back(Triangle(v4, v1, v3));
 			}
 			else if (m + 1 == rings)
 			{
-				sphere_mesh.push_back(Triangle(v4, v1, v2));
-				sphere_mesh.back().flip_normal();
+				sphere_mesh.push_back(Triangle(v1, v4, v2));
 			}
 			else
 			{
-				sphere_mesh.push_back(Triangle(v1, v2, v3));
-				sphere_mesh.back().flip_normal();
-				sphere_mesh.push_back(Triangle(v2, v4, v3));
-				sphere_mesh.back().flip_normal();
+				sphere_mesh.push_back(Triangle(v2, v1, v3));
+				sphere_mesh.push_back(Triangle(v4, v2, v3));
 			}
 
 		}

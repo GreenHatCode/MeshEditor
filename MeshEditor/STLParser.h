@@ -17,6 +17,16 @@ struct Vec
 	double length_squared() const {
 		return x * x + y * y + z * z;
 	}
+	double dot(const Vec& v) const {
+		return x * v.x + y * v.y + z * v.z;
+	}
+	// approximate calculation of the coordinates 
+	// of the intermediate point between points v and t
+	Vec interpolate(const Vec& v, double t) const 
+	{ 
+		return { x + t * (v.x - x), y + t * (v.y - y), z + t * (v.z - z) }; 
+	}
+
 	double x, y, z;
 };
 
@@ -58,7 +68,6 @@ inline Vec get_normal(const Vec& v1, const Vec& v2, const Vec& v3) {
 	return unit_vector(cross(v2 - v1, v3 - v2));
 }
 
-
 struct Triangle
 {
 	Triangle(Vec a, Vec b, Vec c)
@@ -79,13 +88,35 @@ struct Triangle
 
 using TriangleSoup = std::vector<Triangle>;
 
+inline bool intersects_mesh(const TriangleSoup& triangleSoup, const Vec& origin, const Vec& normal)
+{
+	for (const auto& tri : triangleSoup) {
+		// Compute signed distances of triangle vertices from the plane
+		double d0 = normal.dot(tri.A - origin);
+		double d1 = normal.dot(tri.B - origin);
+		double d2 = normal.dot(tri.C - origin);
+
+		// If at least one vertex is on a different side, there's an intersection
+		if ((d0 > 0 && d1 > 0 && d2 > 0) || (d0 < 0 && d1 < 0 && d2 < 0)) {
+			continue; // Triangle is completely on one side
+		}
+
+		return true; // Triangle intersects the panel
+	}
+	return false; // No intersections found
+}
+
+
+
+
+
+
 class STLParser
 {
 public:
 	TriangleSoup read(const std::string& filename); // reads model data from file
 	void write(const TriangleSoup& triangleSoup, const std::string& filename); // writes model data to file
 private:
-	std::string print_triangle(Triangle triangle);
 
 };
 
