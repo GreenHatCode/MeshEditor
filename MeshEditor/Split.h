@@ -20,5 +20,6 @@ private:
 
 	bool fileExists(const std::string& file_path, bool input_file);
 	Vec get_origin(const std::string str_origin);
+	TriangleSoup triangulate_hole(const std::vector<Vec>& vecs);
 };
 
