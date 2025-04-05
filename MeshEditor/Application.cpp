@@ -1,5 +1,6 @@
 #include "Application.h"
 
+
 void Application::registerCommand(std::unique_ptr<Command> command)
 {
 	m_commandmap.emplace(command->getName(), std::move(command));
@@ -7,63 +8,44 @@ void Application::registerCommand(std::unique_ptr<Command> command)
 
 int Application::execute(int argc, char* argv[])
 {
-	std::string input_command;
 
-	// main loop
-	std::cout << "\tMESH EDITOR" << std::endl;
-	while (true)
+	if (argc <= 1)
 	{
-		std::cout << "command> ";
-		std::getline(std::cin, input_command);
-		std::cout << input_command << std::endl; // todo: remove in the end
-
-		if (input_command == "exit")return 0;
-
-		if (auto search = m_commandmap.find(input_command.substr(0, input_command.find_first_of(' '))); search != m_commandmap.end())
-		{
-			std::cout << "Command finished with code " << search->second->execute(GetCommandArgs(input_command)) << std::endl;;
-		}
-		else std::cerr << "There is no such command!" << std::endl;
-
-
-
+		std::cout << "No command entered." << std::endl;
+		return 0;
 	}
+	if (argc%2==0)
+	{
+		std::cout << "Incorrect arguments count." << std::endl;
+		return 0;
+	}
+	std::vector<std::string> input_command(argv + 1, argv + argc);
+
+	if (auto search = m_commandmap.find(input_command[0]); search != m_commandmap.end())
+	{
+		std::cout << "Command finished with code " << search->second->execute(GetCommandArgs(input_command)) << std::endl;;
+	}
+	else std::cerr << "There is no such command!" << std::endl;
 
 	return 0;
 }
 
-std::map<std::string, std::string> Application::GetCommandArgs(std::string command)
+std::map<std::string, std::string> Application::GetCommandArgs(const std::vector<std::string>& command)
 {
-	// remove command name
-	command.erase(0, command.find(' ')+1);
-	
-	// remove all spaces and quotes
-	auto no_space_end = std::remove(command.begin(), command.end(), ' ');
-	command.erase(no_space_end, command.end());
-	no_space_end = std::remove(command.begin(), command.end(), '\"');
-	command.erase(no_space_end, command.end());
-
 	// parsing
 	std::map<std::string, std::string> result_map;
-	std::string key, val;
+	std::string val;
 
-	// after preparing for parsing
-	// L=10.0,origin=(4.5,3.4,2.1),filepath="D:\cube.stl"
-
-	command.push_back('\0');
-	size_t prev = 0;
-	for (size_t curr = 1; curr < command.size(); curr++)
+	// command example
+	// 0    1 2  3    4      5 6              7        8 9
+	// Cube L = 10.0, origin = (4.5,3.4,2.1), filepath = "D:\cube.stl"
+	for (size_t i = 1; i < command.size() - 2; i+=3)
 	{
-		if (command[curr] == '\0' || (command[curr] == ',' && std::isalpha(std::tolower(command[curr + 1]))))
-		{
-			std::string param = command.substr(prev, curr - prev);
-			prev = curr + 1;
-
-			// fill the map with params
-			int delim_idx = param.find('=');
-			result_map.emplace(param.substr(0, delim_idx), param.substr(delim_idx + 1, param.size()));
-		}
+		val = command[i + 2];
+		if (val.back() == ',')val.pop_back();
+		result_map.emplace(command[i], val);
 	}
+
 
 	return result_map;
 }
