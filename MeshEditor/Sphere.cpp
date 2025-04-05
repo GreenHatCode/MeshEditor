@@ -7,11 +7,11 @@ const std::string& Sphere::getName() const
 
 int Sphere::execute(const std::map<std::string, std::string>& args)
 {
-	if (args.count("R") != 1 || args.count("origin") != 1 || args.count("slices") != 1 || args.count("rings") != 1 || args.count("filename") != 1) return 3;
+	if (args.count("R") != 1 || args.count("origin") != 1 || args.count("slices") != 1 || args.count("rings") != 1 || args.count("filename") != 1) return 4;
 	if (std::stod(args.at("R")) <= 0)return 1;
 	if (std::stod(args.at("slices")) <= 2 || std::stod(args.at("rings")) <= 1)return 2;
 	std::ofstream test(args.at("filename"));
-	if (!test)return 2;
+	if (!test)return 3;
 
 	double R = std::stod(args.at("R"));
 	Vec origin = get_origin(args.at("origin")); // I consider it the center of the sphere
