@@ -14,11 +14,6 @@ int Application::execute(int argc, char* argv[])
 		std::cout << "No command entered." << std::endl;
 		return 0;
 	}
-	if (argc%2==0)
-	{
-		std::cout << "Incorrect arguments count." << std::endl;
-		return 0;
-	}
 	std::vector<std::string> input_command(argv + 1, argv + argc);
 
 	if (auto search = m_commandmap.find(input_command[0]); search != m_commandmap.end())

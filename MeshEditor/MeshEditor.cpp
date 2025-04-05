@@ -13,8 +13,5 @@ int main(int argc, char *argv[])
 	app.registerCommand(std::make_unique<Cube>());
 	app.registerCommand(std::make_unique<Split>());
 
-
-
-
 	return app.execute(argc, argv);
 }
